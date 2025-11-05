@@ -10,10 +10,12 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                echo 'Fetching source code...'
-                sh 'ls -R'
+                git branch: 'master',
+                    url: 'https://github.com/tejakotyada/terraform-node-ci.git',
+                    credentialsId: 'github-credentials'
             }
         }
+                 
 
         stage('Build Docker Image') {
             steps {
